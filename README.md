@@ -1,47 +1,55 @@
+# Wake-Up
 
-# wake-up
+After many years of traveling and enjoying good sleep—even with jet lag—thanks to the [aXbo](https://www.axbo.at/pages/home), an Austrian sleep phase alarm clock, I wanted to enhance my aXbo by using my own preferred MP3 music as an alarm sound.
 
-After many years of travelling and good sleep (even with Jetlag) thanks to [aXbo](https://www.axbo.at/pages/home) an Austrian sleep phase alarm clock,
-I wanted to pimp my aXbo to use my own or preferred music as mp3.
+> **Note:** aXbo detects when you're in a light sleep phase and wakes you up at the optimal time. This product has been one of the most important tools in my life. I don't know how I would have managed waking up in good condition in different countries around the world (e.g. after 24h travel) without my aXbo.
 
-> Note: aXbo recognizes when you're in deep sleep and wakes you up when the time is right; this product is one of the most important products I ever used, I don't know how I would have been able to handle not knowing in which country I will wake up and to any given time on earth, without my aXbo.
+![Wake-Up setup](wake-up.png "Wake-Up setup")
 
-!["wake-up"](wake-up.png "Wake-Up setup")
-
-For the used serial MP3 board library see https://github.com/salvadorrueda/ArduinoSerialMP3Player by Salvador Rueda.
+This project utilizes the [ArduinoSerialMP3Player](https://github.com/salvadorrueda/ArduinoSerialMP3Player) library by Salvador Rueda.
 
 ---
 
 ## How It Works
 
-1. **Detecting sound at speaker output**: Using the analog input `A0` it will detect if the wake-up music started to play.
-2. **Play MP3**: The MP3 board will get the command to play the music (external mini-speaker).
-3. **Waiting for User-Input**: The music will repeat until a button on `D2` will be pushed.
-4. **Optional open shutters**: A HTTP request can be send to FHEM to open the shutters
+1. **Detecting sound output**: The system monitors the aXbo's speaker output via analog input `A0` to detect when the wake-up music starts playing.
+2. **Playing MP3 files**: An external MP3 board receives a command to play music through a mini speaker.
+3. **User interaction**: The music repeats until the user presses a button connected to `D2`.
+4. **Optional shutter control**: A HTTP request can be sent to FHEM to automatically open the shutters.
 
 ---
 
-## Preparation
+## Setup & Requirements
 
-* Configure the MP3 board
-* Opto-coupler and switch
-* ESP8266 and connections
-* Serial connection to MP3 board
-* MP3 music filename `001` on microSD
-* case, mini-speaker
+### Hardware Components
+
+- **MP3 board** (configured accordingly)
+- **Optocoupler & switch** for signal detection
+- **ESP8266** for control and communication
+- **Serial connection** to the MP3 board
+- **MicroSD card** with MP3 file named `001.mp3`
+- **Case & mini speaker** for output
+
+### Software & Tools
+
+- **PlatformIO** with **Visual Studio Code** for development, flashing and serial debugging
 
 ---
 
-## Programm on ESP8266
+## Installation & Usage
 
-The flashing, testing, serial communication can all be done easily thanks to e.g. PlatformIO and Visual Studio Code intergration
+1. Flash the ESP8266 with the appropriate firmware.
+2. Place the MP3 file (`001.mp3`) on the microSD card.
+3. Connect the hardware components as per the schematic.
+4. Deploy the device near the aXbo speaker.
+5. Enjoy waking up to your preferred music!
 
 ---
 
 ## Legal Information
 
-- This project uses PlatformIO, Visual Studio Code, NodeMCU, ArduinoSerialMP3Player, FHEM, etc. Refer to their respective licenses for compliance.
-- Ensure your use case complies with data protection regulations, particularly when handling sensitive or personal information.
-- The authors provide no warranty and assume no liability for any issues arising from the use of this tool.
+- This project makes use of **PlatformIO, Visual Studio Code, NodeMCU, ArduinoSerialMP3Player, FHEM**, and other tools. Refer to their respective licenses for compliance.
+- Ensure compliance with **data protection regulations**, especially when handling personal or sensitive information.
+- The authors **provide no warranty** and assume **no liability** for any issues arising from the use of this tool.
 
 ---
